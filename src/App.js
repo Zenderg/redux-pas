@@ -1,31 +1,38 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import './App.css'
+import User from './components/User'
+import Page from './components/Page'
+import { setYear } from './actions/PageActions'
+
+import './containers/App.css'
 
 class App extends Component {
-  static mapStateToProps = store => {
-    console.log(store) // посмотрим, что же у нас в store?
-    return {
-      user: store.user,
-      page: store.page,
-    }
-  }
+  static mapStateToProps = store => ({
+    user: store.user,
+    page: store.page,
+  })
+
+  static mapDispatchToProps = dispatch => ({
+    setYear: year => dispatch(setYear(year)),
+  })
 
   render() {
+    const { user, page, setYear } = this.props
     return (
       <div className="app">
         <header className="app__header">
-          <h1 className="app__title">
-            Топ фоток за {this.props.page.year} год
-          </h1>
-          <p className="app__name">Пользователь: {this.props.user.name}</p>
+          <h1 className="app__title">Топ фоток</h1>
+          <User name={user.name} />
         </header>
         <main>
-          <p>Кажется у тебя их {this.props.page.photos.length}</p>
+          <Page year={page.year} photos={page.photos} setYear={setYear} />
         </main>
       </div>
     )
   }
 }
 
-export default connect(App.mapStateToProps)(App)
+export default connect(
+  App.mapStateToProps,
+  App.mapDispatchToProps
+)(App)
