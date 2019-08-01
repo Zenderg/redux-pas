@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import User from './components/User'
-import Page from './components/Page'
-import { setYear } from './actions/PageActions'
+import User from '../components/user/User'
+import Page from '../components/page/Page'
+import { setYear } from '../actions/PageActions'
 
-import './containers/App.css'
+import './App.scss'
 
 class App extends Component {
   static mapStateToProps = store => ({
@@ -24,7 +24,7 @@ class App extends Component {
           <h1 className="app__title">Топ фоток</h1>
           <User name={user.name} />
         </header>
-        <main>
+        <main className="app__main">
           <Page year={page.year} photos={page.photos} setYear={setYear} />
         </main>
       </div>

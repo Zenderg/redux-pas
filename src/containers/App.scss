@@ -1,0 +1,19 @@
+@import '../styles/variables';
+
+.app {
+  .app__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $purple;
+    color: white;
+
+    .app__title {
+      margin-left: 50px;
+    }
+  }
+
+  .app__main {
+    padding: 30px;
+  }
+}
