@@ -10,6 +10,21 @@ export default class Page extends React.Component {
     this.props.getPhotos(val)
   }
 
+  renderPhotos = () => {
+    const { photos, isFetching } = this.props
+
+    if (isFetching) {
+      return <p>Загрузка...</p>
+    }
+
+    return photos.map(photo => (
+      <div className="photo" key={photo.id}>
+        <img src={photo.sizes[1].url} alt="" />
+        <p>{photo.likes.count} ❤</p>
+      </div>
+    ))
+  }
+
   render() {
     const { year, photos } = this.props
     return (
@@ -49,6 +64,7 @@ export default class Page extends React.Component {
         <p className="info">
           {photos.length} фото за {year} год
         </p>
+        <div className="photos">{this.renderPhotos()}</div>
       </div>
     )
   }
@@ -58,4 +74,6 @@ Page.propTypes = {
   year: PropTypes.number.isRequired,
   photos: PropTypes.array.isRequired,
   getPhotos: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 }

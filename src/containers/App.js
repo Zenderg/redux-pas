@@ -36,6 +36,7 @@ class App extends Component {
             year={page.year}
             photos={page.photos}
             getPhotos={getPhotos}
+            error={page.error}
             isFetching={page.isFetching}
           />
         </main>
