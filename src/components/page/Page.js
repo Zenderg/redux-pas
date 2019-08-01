@@ -7,7 +7,7 @@ export default class Page extends React.Component {
   onBtnClick = e => {
     const val = +e.currentTarget.innerText
 
-    this.props.setYear(val)
+    this.props.getPhotos(val)
   }
 
   render() {
@@ -57,5 +57,5 @@ export default class Page extends React.Component {
 Page.propTypes = {
   year: PropTypes.number.isRequired,
   photos: PropTypes.array.isRequired,
-  setYear: PropTypes.func.isRequired,
+  getPhotos: PropTypes.func.isRequired,
 }

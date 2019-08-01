@@ -1,3 +1,15 @@
+@import '../../styles/variables';
+
+.btn-login {
+  cursor:pointer;
+  background-color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: $purple;
+  margin-right: 50px;
+}
+
 .user {
   margin-right: 50px;
 }
