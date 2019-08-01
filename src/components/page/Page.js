@@ -12,7 +12,6 @@ export default class Page extends React.Component {
 
   render() {
     const { year, photos } = this.props
-    console.log(year, typeof year)
     return (
       <div className="main__wrapper">
         <div className="years">
